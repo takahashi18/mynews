@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\Admin;
-use app\Http\Controllers\Admin\NewsController;
-use app\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\ProfileController;
 
 
 /*
@@ -27,11 +27,11 @@ Route::group(['prefix' => 'admin'], function() {
 */
 
 // Laravel:9
-Route::controller(NewsController::class) -> prefix('admin') -> group ( function(){
+Route::controller(NewsController::class) -> prefix ('admin') -> group ( function(){
     Route::get('/news/create', 'add');
 });
 
-Route::controller(ProfileController::class) -> prefix('admin') -> group ( function(){
+Route::controller(ProfileController::class) -> prefix ('admin') -> group ( function(){
     Route::get('/profile/create', 'add');
     Route::get('/profile/edit', 'edit');
 });
