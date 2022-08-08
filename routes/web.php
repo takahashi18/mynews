@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\Admin;
+use app\Http\Controllers\Admin\NewsController;
+use app\Http\Controllers\Admin\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +19,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+/* Laravel:7
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('news/create', 'Admin\NewsController@add');
+});
+*/
+
+// Laravel:9
+Route::controller(NewsController::class) -> prefix('admin') -> group ( function(){
+    Route::get('/news/create', 'add');
+});
+
+Route::controller(ProfileController::class) -> prefix('admin') -> group ( function(){
+    Route::get('/profile/create', 'add');
+    Route::get('/profile/edit', 'edit');
 });
