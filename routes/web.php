@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
-
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +21,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 /* Laravel:7
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('news/create', 'Admin\NewsController@add');
 });
 */
 
 // Laravel:9
-Route::controller(NewsController::class) -> prefix ('admin') -> group ( function(){
+Route::controller(NewsController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
     Route::get('/news/create', 'add');
 });
 
-Route::controller(ProfileController::class) -> prefix ('admin') -> group ( function(){
+Route::controller(ProfileController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
     Route::get('/profile/create', 'add');
     Route::get('/profile/edit', 'edit');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
