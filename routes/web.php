@@ -29,11 +29,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 // Laravel:9
 Route::controller(NewsController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
     Route::get('/news/create', 'add');
+    Route::post('/news/create','create');
 });
 
 Route::controller(ProfileController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
     Route::get('/profile/create', 'add');
     Route::get('/profile/edit', 'edit');
+    Route::post('/profile/create','create');
+    Route::post('/profile/edit','update');
 });
 
 Auth::routes();

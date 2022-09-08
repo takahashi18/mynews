@@ -15,4 +15,9 @@ class NewsController extends Controller
         //return 戻り値を指定：returnで返される値がそのアドレスにアクセスした際表示される
         //view関数で戻り値の用意をしている　このviewを使うことでviewフォルダのプレートエンジンの使用が可能
     }
+    public function create(Request $request)
+    {
+        //admin/newscreateにリダイレクトする
+        return redirect('admin/news/create'); 
+    }
 }
