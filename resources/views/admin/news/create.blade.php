@@ -20,26 +20,27 @@
                         countメソッドは配列の個数を返すメソッドになっている
                         もし、エラーがなければ $errors は null を返すので、count($errors) は 0 を返す
                         --}}
-                    <ul>
-                        @foreach ($errors->all() as $e)
-                        <li>{{ $e }}</li>
-                        {{--foreach は、配列の数だけループする--}}
-                        @endforeach
-                    </ul>
+                        <ul>
+                            @foreach ($errors->all() as $e)
+                                <li>{{ $e }}</li>
+                            {{--foreach は、配列の数だけループする--}}
+                            @endforeach
+                        </ul>
                     @endif
+
                     <div class="form-group row">
                         <label class="col-md-2" for="title">タイトル</label>
-                        <div class="col-md-qo">
+                        <div class="col-md-10">
                             <input type="text" class="form-control" name="title" value="{{ old('title')}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="co-md-2" for="body">本文</label>
+                        <label class="col-md-2" for="body">本文</label>
                         <div class="col-md-10">
                             <textarea class="form-control" name="body" rows="20">{{old('body') }}</textarea>
                         </div>
                         <div class="form-group row" >
-                            <label class="col-md-2" for="title">画像</label>
+                            <label class="col-md-2" for="image">画像</label>
                             <div class="col-md-10">
                                 <input type="file" class="form-control-file" name="image">
                             </div>
