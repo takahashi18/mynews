@@ -12,7 +12,7 @@
             <div class="col-md-8 mx-auto">
                 <h2>ニュース新規作成</h2>
                 {{---カリキュラムには、form action記載が{{ action(~)　}}であるが、{ action(~)}での表記にて処理可能となった　下記部分--}}
-                <form action="{ action('Admin\NewsController@create')}" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data">
 
                     @if (count($errors) > 0)
                     {{--
