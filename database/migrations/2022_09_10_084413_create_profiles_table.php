@@ -14,9 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('name'); //名前を保存するカラム
+            $table->string('gender'); //性別を保存するカラム
+            $table->string('hobby'); //趣味を保存するカラム
+            $table->string('introduction'); //自己紹介を保存するカラム
         });
+        //ここでは、’name’,'gender',’hobby',’introduction’,の4つのカラムを持つ’profile’というテーブルの作成
     }
 
     /**
@@ -26,6 +29,9 @@ return new class extends Migration
      */
     public function down()
     {
+         //関数downいは、マイグレーションの取り消しを行うためのコードを書く。ここではもし、newsというテーブルが存在すれば削除すると書かれている
+
         Schema::dropIfExists('profiles');
     }
+};  }
 };
