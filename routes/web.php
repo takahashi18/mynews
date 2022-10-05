@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Route::controller(NewsController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
     Route::get('/news/create', 'add');
     Route::post('/news/create','create');
+    Route::get('/news','index');
 });
 
 Route::controller(ProfileController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
@@ -37,6 +38,7 @@ Route::controller(ProfileController::class) -> prefix ('admin') -> middleware('a
     Route::get('/profile/edit', 'edit');
     Route::post('/profile/create','create');
     Route::post('/profile/edit','update');
+    Route::get('/profile','index');
 });
 
 Auth::routes();

@@ -33,6 +33,19 @@ class ProfileController extends Controller
          //admin/profile/createにリダイレクトする
         return redirect('admin/profile/create');
     }
+// indexAction の追加　
+    public function index(Request $request)
+    {
+        $cond_name = $request->cond_name;
+        if ($cond_name != '') {
+            $posts = Profile::where('title', $cond_name)->get();
+        } else {
+            $posts = Profile::all();
+        }
+        return view('admin.profile.index',['posts' => $posts, 'cond_title' => $cond_name]);
+    }
+//ここまで
+
     public function edit()
     {
         return view('admin.profile.edit');
