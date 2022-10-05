@@ -38,11 +38,11 @@ class ProfileController extends Controller
     {
         $cond_name = $request->cond_name;
         if ($cond_name != '') {
-            $posts = Profile::where('title', $cond_name)->get();
+            $posts = Profile::where('name', $cond_name)->get();
         } else {
             $posts = Profile::all();
         }
-        return view('admin.profile.index',['posts' => $posts, 'cond_title' => $cond_name]);
+        return view('admin.profile.index',['posts' => $posts, 'cond_name' => $cond_name]);
     }
 //ここまで
 
