@@ -75,4 +75,62 @@ class NewsController extends Controller
         //return文で、index.blade.phpのファイルに取得したレコード（$posts）と、ユーザが入力した文字列（＄cond＿title）を渡し、ページを開く
         //Controllerで、Modelに対してWhereメソッドを指定して検索している。Whereへの引数で検索条件を設定している。検索条件となる名前が入力されていない場合は、登録してあるずべ手のデータを取得する
     }
+
+    // 4-18追記
+    public function edit(Request $request)
+    {
+        //NewsModel からデータを取得する
+        $news = News::find($request->id);
+        if (empty($news)) {
+            abort(404);
+        }
+        return view('admin,news.edit', ['news_form' => $news]);
+    }
+
+    //editではNews::findを使ってidパラメータの値のモデルを取得し、これを['news_form'=> $news]の箇所でformとうい値に設定
+    //このNewsインスタンスが、edit.blade.phpのフォームのvalueに表示されることになる
+    //ifの中のabort関数を使いエラー系レスポンスを返している
+    //abort関数を呼び出すと引数のレスポンスコードで、対応擦るエラーページに遷移
+    //ここでは「４０４」と設定しているので、$newsが空な時「Not Found」といページに遷移する
+
+    public function update(Request $request)
+    {
+        //alidationをかける
+        $this->validate($request,News::$rules);
+        //News Modelからデータを取得する
+        $news = News::find($request->id);
+        //送信されてきたフォームデータを格納する
+        $news_form = $request->all();
+
+        //106 ~114 +117 +118 のきさいがないと画像を更新したときにエラーになってしまう
+        if ($request->input('remove')) {
+            //削除にチェックがついてる時の処理
+            $news_form['image_path'] = null;
+        } elseif ($request->fle('image')){
+            $path = $request->file('image')->store('public/image');
+            $news_form['image_path'] = basename($path);
+        } else {
+            $news_form['image_path'] = $news->image_path;
+        }
+
+        unset($news_form['_token']);
+        unset($news_form['image']);
+        unset($news_form['remove']);
+
+        //該当するデータを上書きして保存する
+        $news->fill($news_form)->save();
+        //上記107行目：$news->fill($news_form) $news->save(); を短縮して記載したもの
+
+        return redirect('admin/news');
+    }
+
+    public function delete(Request $request)
+    {
+        //がおつするNews Modelを取得
+        $news = News::find($request->id);
+        //削除する
+        $news->dalete();
+        return redirect('admin/news/');
+        //データをセーブするときは、$news->save(); で　saveメソッドを利用しましたが、削除の場合はdelete()メソッドを使う
+    }
 }

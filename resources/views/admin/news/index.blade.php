@@ -36,6 +36,7 @@
                                 <th width="10%">ID</th>
                                 <th width="20%">タイトル</th>
                                 <th width="50%">本文</th>
+                                <th width="10%">操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,14 @@
                                     <th>{{ $news->id}}</th>
                                     <td>{{ Str::limit($news->title,100) }}</td>
                                     <td>{{ Str::limit($news->body,250) }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ action('Admin\NewsController@edit',['id' => $news->id])}}">編集</a>
+                                        </div>
+                                        <div>
+                                            <a href="{{ action('Admin\NewsController@delete',['id'=> $news->id] )}}">削除</a>
+                                        </div>
+                                    </tr>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -62,7 +71,7 @@
 
     Ex))　Str::limit("2018/12/13”,7)　結果は「2018/12」の７文字
         　Str::limit("2018年12月13日”,7)　結果は「2018年1」の７文字　全角「年」が２文字扱い
-    
+
         Str::limit($news->title,100)の場合は、タイトルが全て全角なら最大５０文字まで表示可能
 
         取得したデータは、Viewテンプレートで処理される

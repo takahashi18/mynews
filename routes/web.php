@@ -31,6 +31,9 @@ Route::controller(NewsController::class) -> prefix ('admin') -> middleware('auth
     Route::get('/news/create', 'add');
     Route::post('/news/create','create');
     Route::get('/news','index');
+    Route::get('/news/edit','edit');
+    Route::post('/news/edit','updata');
+    Route::get('news/delete','delete');
 });
 
 Route::controller(ProfileController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
