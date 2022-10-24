@@ -35,7 +35,9 @@ return new class extends Migration
     //関数downいは、マイグレーションの取り消しを行うためのコードを書く。ここではもし、newsというテーブルが存在すれば削除すると書かれている
 
     /**
+     *
      * Reverse the migrations.
+     *
      *
      * @return void
      */

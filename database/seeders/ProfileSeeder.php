@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ProfileSeeder extends Seeder
 {
     /**
+     * 
      * Run the database seeds.
      *
      * @return void

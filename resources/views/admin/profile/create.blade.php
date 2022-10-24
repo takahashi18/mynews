@@ -28,6 +28,7 @@
                             <input type="text" class="form-control" name="name" value="{{ old('name')}}">
                         </div>
                     </div>
+                    
                     {{--gender  RadioB --}}
                     <div class="form-group row">
                         <label for="gender" class="col-md-4 col-form-label text-md-right">性別</label>

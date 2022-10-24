@@ -40,6 +40,7 @@
                                 <th width="10%">操作</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
                             @foreach($posts as $news)
                                 <tr>

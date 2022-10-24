@@ -36,16 +36,19 @@
                             <input type="text" class="form-control" name="title" value="{{ old('title')}}">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label class="col-md-2" for="body">本文</label>
                         <div class="col-md-10">
                             <textarea class="form-control" name="body" rows="20">{{old('body') }}</textarea>
                         </div>
+
                         <div class="form-group row" >
                             <label class="col-md-2" for="image">画像</label>
                             <div class="col-md-10">
                                 <input type="file" class="form-control-file" name="image">
                             </div>
+                            
                         </div>
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-pirmary" value="更新">

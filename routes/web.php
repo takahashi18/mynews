@@ -20,6 +20,7 @@ use GuzzleHttp\Middleware;
 Route::get('/', function () {
     return view('welcome');
 });
+
 /* Laravel:7
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('news/create', 'Admin\NewsController@add');

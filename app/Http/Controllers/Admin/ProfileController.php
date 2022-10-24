@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 //以下の追加でProfile:modelが扱えるようになる
 use App\Models\Profile;
+
 class ProfileController extends Controller
 {
     public function add()

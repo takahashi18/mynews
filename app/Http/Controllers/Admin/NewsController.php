@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 //以下の追加でnews:modelが扱えるようになる
 use App\Models\News;
+
 class NewsController extends Controller
 {
     //addというActionをNewsControllerに追加（4−9）

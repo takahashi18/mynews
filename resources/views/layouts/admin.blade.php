@@ -26,6 +26,7 @@
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     </head>
+    
     <body>
         <div id="app">
             {{-- 画面上部に表示するナビゲーションバーです。 --}}
