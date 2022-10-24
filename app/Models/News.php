@@ -20,6 +20,12 @@ class News extends Model
         'title' =>'required',
         'body' =>'required',
     );
+
+    //4−19追記
+    public function histories()
+    {
+        return $this->hasMany('App\Models\History');
+    }
 }
 
 // バリデーションでデータが異常であることを見つけたときには、データを保存せずに入力フォームへ戻すようにする。戻った先の画面では、データを登録できなかった理由を表示する

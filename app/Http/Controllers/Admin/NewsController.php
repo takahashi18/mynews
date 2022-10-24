@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //以下の追加でnews:modelが扱えるようになる
 use App\Models\News;
+use App\Models\History;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -121,7 +123,12 @@ class NewsController extends Controller
         $news->fill($news_form)->save();
         //上記107行目：$news->fill($news_form) $news->save(); を短縮して記載したもの
 
-        return redirect('admin/news');
+        $history = new History;
+        $history->news_id = $news->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
+
+        return redirect('admin/news/');
     }
 
     public function delete(Request $request)
