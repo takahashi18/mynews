@@ -9,11 +9,12 @@
         <div class="row">
             <div class="col-md-4">
                 {{-- <a href="{{ action(Adimn\NewsController@add) }}" role="button" class="btn btn-primary">新規作成</a> --}}
-                <a href="" role="button" class="btn btn-primary">新規作成</a>
+                <a href="{{ action([App\Http\Controllers\Admin\NewsController::class, 'add'])}}" role="button" class="btn btn-primary">新規作成</a>
+
             </div>
             <div class="col-md-8">
                 {{-- <form action="{{action('Admin\NewsController@index') }}" method="get"> --}}
-                <form action="" method="get">
+                <form action="{{ action([App\Http\Controllers\Admin\NewsController::class, 'index'])}}" method="get">
                     <div class="form-group row">
                         <label class="col-md-2">タイトル</label>
                         <div class="col-md-8">
@@ -47,12 +48,16 @@
                                     <td>{{ Str::limit($news->body,250) }}</td>
                                     <td>
                                         <div>
-                                            <a href="{{ action('Admin\NewsController@edit',['id' => $news->id])}}">編集</a>
+                                            <a href="{{ action([App\Http\Controllers\Admin\NewsController::class,'edit'],['id' => $news->id])}}">編集</a>
                                         </div>
                                         <div>
-                                            <a href="{{ action('Admin\NewsController@delete',['id'=> $news->id] )}}">削除</a>
+                                            <a href="{{ action([App\Http\Controllers\Admin\NewsController::class, 'delete'],['id'=> $news->id] )}}">削除</a>
+                                            {{-- actionメソッドは全てを指定（App\-\class）する必要がある
+                                                これでリンク先の設定が可能になる。
+                                                現在はactionmメソッドでのリンク指定の他に、routeメソッドでの指定も可能
+                                                --}}
                                         </div>
-                                    </tr>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

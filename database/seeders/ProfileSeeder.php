@@ -15,12 +15,12 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('profile')->insert([
+        DB::table('profiles')->insert([
             [
                 'name' => '佐藤太郎',
                 'gender' => '男性',
                 'hobby' => 'サッカー',
-                'intrduction' => 'サッカーが大好きです！',
+                'introduction' => 'サッカーが大好きです！',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
@@ -28,7 +28,7 @@ class ProfileSeeder extends Seeder
                 'name' => '山田花子',
                 'gender' => '女性',
                 'hobby' => '犬と散歩すること',
-                'intrduction' => '柴犬飼ってます',
+                'introduction' => '柴犬飼ってます',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],

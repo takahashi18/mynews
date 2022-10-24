@@ -17,7 +17,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('title'); //ニュースのタイトルを保存するカラム
             $table->string('body'); //ニュースの本文を保存するカラム
             $table->string('image_path')->nullable(); //画像のパスを保存するカラム

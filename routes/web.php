@@ -28,12 +28,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
 // Laravel:9
 Route::controller(NewsController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
-    Route::get('/news/create', 'add');
+    Route::get('/news/create','add');
     Route::post('/news/create','create');
     Route::get('/news','index');
     Route::get('/news/edit','edit');
-    Route::post('/news/edit','updata');
-    Route::get('news/delete','delete');
+    Route::post('/news/edit','update');
+    Route::get('/news/delete','delete');
 });
 
 Route::controller(ProfileController::class) -> prefix ('admin') -> middleware('auth') -> group ( function(){
@@ -42,6 +42,7 @@ Route::controller(ProfileController::class) -> prefix ('admin') -> middleware('a
     Route::post('/profile/create','create');
     Route::post('/profile/edit','update');
     Route::get('/profile','index');
+    Route::get('/profile/delete','delete');
 });
 
 Auth::routes();
@@ -51,6 +52,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -7,7 +7,7 @@
             <div class="col-md-8 mx-auto">
                 <h2>ニュース編集</h2>
                 {{-- <form action="{{ action('Admin\NewsController@update') }}" method="post" enctype="multipart/form-data"> --}}
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ action([App\Http\Controllers\Admin\NewsController::class,'update'])}}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)

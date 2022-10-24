@@ -65,7 +65,7 @@ class NewsController extends Controller
 
         } else {
         //それ以外は全てのニュースを取得する
-        $posts = News::all();
+        $posts=News::all();
         //これは、newモデルを使って、データベースに保存されている、newsテーブルのレコードを全て取得し、変数　$posts　に代入しているという意味
 
         }
@@ -84,7 +84,7 @@ class NewsController extends Controller
         if (empty($news)) {
             abort(404);
         }
-        return view('admin,news.edit', ['news_form' => $news]);
+        return view('admin.news.edit', ['news_form' => $news]);
     }
 
     //editではNews::findを使ってidパラメータの値のモデルを取得し、これを['news_form'=> $news]の箇所でformとうい値に設定
@@ -95,7 +95,7 @@ class NewsController extends Controller
 
     public function update(Request $request)
     {
-        //alidationをかける
+        //validationをかける
         $this->validate($request,News::$rules);
         //News Modelからデータを取得する
         $news = News::find($request->id);
@@ -106,7 +106,7 @@ class NewsController extends Controller
         if ($request->input('remove')) {
             //削除にチェックがついてる時の処理
             $news_form['image_path'] = null;
-        } elseif ($request->fle('image')){
+        } elseif ($request->file('image')){
             $path = $request->file('image')->store('public/image');
             $news_form['image_path'] = basename($path);
         } else {
@@ -126,11 +126,11 @@ class NewsController extends Controller
 
     public function delete(Request $request)
     {
-        //がおつするNews Modelを取得
+        //該当gするNews Modelを取得
         $news = News::find($request->id);
         //削除する
-        $news->dalete();
-        return redirect('admin/news/');
+        $news->delete();
+        return redirect('admin/news');
         //データをセーブするときは、$news->save(); で　saveメソッドを利用しましたが、削除の場合はdelete()メソッドを使う
     }
 }
