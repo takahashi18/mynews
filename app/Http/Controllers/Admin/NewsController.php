@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //以下の追加でnews:modelが扱えるようになる
 use App\Models\News;
+
 use App\Models\History;
 use Carbon\Carbon;
 

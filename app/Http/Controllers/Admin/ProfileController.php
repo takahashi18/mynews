@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //以下の追加でProfile:modelが扱えるようになる
 use App\Models\Profile;
+
 use App\Models\Profilehistory;
 use Carbon\Carbon;
 
@@ -28,7 +29,6 @@ class ProfileController extends Controller
         //フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
 
-        $profile->timestamps = false;
         //データベースを保存する
         $profile->fill($form);
         $profile->save();
@@ -79,7 +79,7 @@ class ProfileController extends Controller
         $profilehistory->edited_at = Carbon::now();
         $profilehistory->save();
         
-        return redirect('admin/profile');
+        return redirect('admin/profile/');
     }
     
     public function delete(Request $request)

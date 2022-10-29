@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Profilehistory extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = array('id');
-    
-    public static $rulues = array(
+
+    public static $rules = array(
         'profile_id' => 'required',
         'edited_at' => 'required',
     );
