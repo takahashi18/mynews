@@ -20,7 +20,7 @@ class Profile extends Model
 
     //4-19追記
     
-    public function profilehistorise()
+    public function profilehistories()
     {
         return $this->hasMany('App\Models\Profilehistory');
     }

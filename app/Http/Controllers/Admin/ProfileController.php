@@ -66,7 +66,8 @@ class ProfileController extends Controller
         //Varidationをかける
         $this->validate($request,Profile::$rules);
         //Profile Modelからデータを取得する
-        $profile=Profile::find($request->id);
+        $profile=Profile::with('profilehistories')->find($request->id);
+        //dd($profile);
         //送信されてきたフォームデータを格納する
         $profile_form = $request->all();
         
