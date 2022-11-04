@@ -13,7 +13,7 @@
         <title>@yield('title')</title>
 
         <!-- Scripts -->
-        {{-- Laravel標準で用意されているJavascriptを読み込みます --}}`
+        {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
@@ -23,7 +23,7 @@
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        {{-- この章の後半で作成するCSSを読み込みます / 4-20追記--}}
+        {{-- この章の後半で作成するCSSを読み込みます / 4-20修正・追記--}}
         <link href="{{ asset('css/front.css') }}" rel="stylesheet">
     </head>
 

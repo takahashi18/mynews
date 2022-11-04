@@ -13,7 +13,7 @@
         <title>@yield('title')</title>
 
         <!-- Scripts -->
-        {{-- Laravel標準で用意されているJavascriptを読み込みます --}}`
+        {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->

@@ -12,7 +12,7 @@
             <div class="col-md-8 mx-auto">
                 <h2>ニュース新規作成</h2>
                 {{---カリキュラムには、form action記載が{{ action(~)　}}であるが、{ action(~)}での表記にて処理可能となった　下記部分--}}
-                <form action="{{ action([App\Http\Controllers\Admin\ProfileController::class,'create'])}}" method="post" enctype="multipart/form-data">
+                <form action="{{ action([App\Http\Controllers\Admin\NewsController::class,'create'])}}" method="post" enctype="multipart/form-data">
                     {{--：異なる形での処理：
                         form action="　action('Admin\NewsController@create "
                     --}}
@@ -48,11 +48,12 @@
                             <div class="col-md-10">
                                 <input type="file" class="form-control-file" name="image">
                             </div>
-                            
+
                         </div>
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-pirmary" value="更新">
                     </div>
+                    <div></div>
                 </form>
             </div>
         </div>
